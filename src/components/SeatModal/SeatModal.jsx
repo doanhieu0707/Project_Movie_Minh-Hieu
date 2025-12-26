@@ -25,7 +25,7 @@ export default function SeatModal({ phim, lichChieu, onClose }) {
   const tongTien = chonGhe.reduce((sum, g) => sum + g.giaVe, 0);
 
   const datVe = async () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("USER_LOGIN"));
     if (!user) {
       alert("Vui lòng đăng nhập để đặt vé");
       return;
