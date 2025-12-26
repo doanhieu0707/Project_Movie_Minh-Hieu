@@ -33,7 +33,7 @@ export default function Header() {
         {isAdmin && (
           <button
             onClick={() => navigate("/admin")}
-            className="hover:text-yellow-400 font-semibold"
+            className="hover:text-yellow-500"
           >
             Quản lý
           </button>
