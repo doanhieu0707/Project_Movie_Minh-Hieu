@@ -14,7 +14,7 @@ const formatDate = (date) => {
 export default function AddFilm() {
   const navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("USER_LOGIN"));
 
   // Check quyền admin
   if (!user || user.maLoaiNguoiDung !== "QuanTri") {

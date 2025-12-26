@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 export default function AdminGuard({ children }) {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("USER_LOGIN"));
 
   if (!user) return <Navigate to="/login" replace />;
 
