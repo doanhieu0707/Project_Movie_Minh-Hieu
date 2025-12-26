@@ -20,7 +20,17 @@ export default function EditFilm() {
     hinhAnh: null,
   });
 
-  // Load chi tiết phim
+  /* ================== UTIL FORMAT DATE ================== */
+  const formatDate = (date) => {
+    if (!date) return "";
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const year = d.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  /* ================== LOAD CHI TIẾT PHIM ================== */
   useEffect(() => {
     movieApi
       .get(`/QuanLyPhim/LayThongTinPhim?MaPhim=${idFilm}`)
@@ -44,6 +54,7 @@ export default function EditFilm() {
       });
   }, [idFilm]);
 
+  /* ================== HANDLE CHANGE ================== */
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setForm({
@@ -60,6 +71,7 @@ export default function EditFilm() {
     setPreview(URL.createObjectURL(file));
   };
 
+  /* ================== SUBMIT ================== */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -69,7 +81,13 @@ export default function EditFilm() {
     formData.append("trailer", form.trailer);
     formData.append("moTa", form.moTa);
     formData.append("maNhom", "GP01");
-    formData.append("ngayKhoiChieu", form.ngayKhoiChieu);
+
+    // ✅ FIX LỖI NGÀY
+    formData.append(
+      "ngayKhoiChieu",
+      formatDate(form.ngayKhoiChieu)
+    );
+
     formData.append("sapChieu", form.sapChieu);
     formData.append("dangChieu", form.dangChieu);
     formData.append("hot", form.hot);
@@ -88,9 +106,12 @@ export default function EditFilm() {
     navigate("/admin/films");
   };
 
+  /* ================== UI ================== */
   return (
     <div className="p-6 bg-white rounded shadow">
-      <h2 className="text-xl font-semibold mb-4">Cập nhật phim</h2>
+      <h2 className="text-xl font-semibold mb-4">
+        Cập nhật phim
+      </h2>
 
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
         <div className="space-y-4">
@@ -137,17 +158,32 @@ export default function EditFilm() {
 
           <div className="flex gap-6">
             <label className="flex items-center gap-2">
-              <input type="checkbox" name="dangChieu" checked={form.dangChieu} onChange={handleChange} />
+              <input
+                type="checkbox"
+                name="dangChieu"
+                checked={form.dangChieu}
+                onChange={handleChange}
+              />
               Đang chiếu
             </label>
 
             <label className="flex items-center gap-2">
-              <input type="checkbox" name="sapChieu" checked={form.sapChieu} onChange={handleChange} />
+              <input
+                type="checkbox"
+                name="sapChieu"
+                checked={form.sapChieu}
+                onChange={handleChange}
+              />
               Sắp chiếu
             </label>
 
             <label className="flex items-center gap-2">
-              <input type="checkbox" name="hot" checked={form.hot} onChange={handleChange} />
+              <input
+                type="checkbox"
+                name="hot"
+                checked={form.hot}
+                onChange={handleChange}
+              />
               Hot
             </label>
           </div>
@@ -173,7 +209,7 @@ export default function EditFilm() {
           {preview && (
             <img
               src={preview}
-              alt=""
+              alt="preview"
               className="w-40 rounded shadow"
             />
           )}
