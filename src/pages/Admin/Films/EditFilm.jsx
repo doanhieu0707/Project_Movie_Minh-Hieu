@@ -20,7 +20,6 @@ export default function EditFilm() {
     hinhAnh: null,
   });
 
-  /* ================== UTIL FORMAT DATE ================== */
   const formatDate = (date) => {
     if (!date) return "";
     const d = new Date(date);
@@ -30,7 +29,6 @@ export default function EditFilm() {
     return `${day}/${month}/${year}`;
   };
 
-  /* ================== LOAD CHI TIẾT PHIM ================== */
   useEffect(() => {
     movieApi
       .get(`/QuanLyPhim/LayThongTinPhim?MaPhim=${idFilm}`)
@@ -54,7 +52,6 @@ export default function EditFilm() {
       });
   }, [idFilm]);
 
-  /* ================== HANDLE CHANGE ================== */
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setForm({
@@ -71,7 +68,6 @@ export default function EditFilm() {
     setPreview(URL.createObjectURL(file));
   };
 
-  /* ================== SUBMIT ================== */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -82,7 +78,6 @@ export default function EditFilm() {
     formData.append("moTa", form.moTa);
     formData.append("maNhom", "GP01");
 
-    // ✅ FIX LỖI NGÀY
     formData.append(
       "ngayKhoiChieu",
       formatDate(form.ngayKhoiChieu)
@@ -106,7 +101,6 @@ export default function EditFilm() {
     navigate("/admin/films");
   };
 
-  /* ================== UI ================== */
   return (
     <div className="p-6 bg-white rounded shadow">
       <h2 className="text-xl font-semibold mb-4">
