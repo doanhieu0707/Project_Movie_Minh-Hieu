@@ -1,0 +1,155 @@
+@import "tailwindcss";
+@import "flowbite";
+
+body {
+  background: radial-gradient(
+      circle at top,
+      rgba(255, 0, 0, 0.08),
+      transparent 40%
+    ),
+    linear-gradient(180deg, #0f0f0f 0%, #111827 30%, #f9fafb 80%);
+  min-height: 100vh;
+}
+
+.home-layout {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 0, 0, 0.08),
+      transparent 40%
+    ),
+    linear-gradient(
+      180deg,
+      #0f0f0f 0%,
+      #111827 25%,
+      #f9fafb 70%
+    );
+}
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f6fa;
+}
+
+/* SIDEBAR */
+.admin-sidebar {
+  width: 230px;
+  background: #0a1a2f;
+  color: white;
+  padding: 20px;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.admin-sidebar a {
+  display: block;
+  padding: 12px;
+  color: #b6c2cf;
+}
+
+.admin-sidebar a.active {
+  background: #1e3a8a;
+  color: white;
+  border-radius: 6px;
+}
+
+/* MAIN */
+.admin-main {
+  flex: 1;
+}
+
+/* HEADER */
+.admin-header {
+  background: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  background: #f87171;
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+/* PAGE */
+.admin-page {
+  padding: 20px;
+}
+
+.admin-search {
+  width: 300px;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+.admin-table {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-table img {
+  width: 50px;
+}
+
+.actions {
+  color: #2563eb;
+}
+
+.form-add-film {
+  max-width: 700px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.form-add-film input,
+.form-add-film textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.btn-submit {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.input {
+  @apply border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
